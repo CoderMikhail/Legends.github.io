@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Web App</title>
+    <style>
+        body {
+            background-image: url('your-photo.jpg'); /* Замените на вашу фотографию */
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #0088cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #005580;
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+
+    <!-- Секция со спонсорами -->
+    <div id="sponsors">
+        <h2>Подпишитесь на спонсоров:</h2>
+        <a href="https://t.me/sponsor1" target="_blank" class="button">Спонсор 1</a>
+        <a href="https://t.me/sponsor2" target="_blank" class="button">Спонсор 2</a>
+        <a href="https://t.me/sponsor3" target="_blank" class="button">Спонсор 3</a>
+        <a href="https://t.me/sponsor4" target="_blank" class="button">Спонсор 4</a>
+        <a href="https://t.me/sponsor5" target="_blank" class="button">Спонсор 5</a>
+        <a href="https://t.me/sponsor6" target="_blank" class="button">Спонсор 6</a>
+        <button id="continue" class="button" onclick="showMainMenu()">Перейти дальше</button>
+    </div>
+
+    <!-- Главное меню -->
+    <div id="main-menu" style="display: none;">
+        <h2>Главное меню</h2>
+        <a href="#profile" class="button">Профиль</a>
+        <a href="#chat" class="button">Чат</a>
+        <a href="#about" class="button">О нас</a>
+    </div>
+
+    <!-- Профиль -->
+    <div id="profile" style="display: none;">
+        <h2>Профиль</h2>
+        <p>Баланс: $100</p>
+        <p>Лидов: 5</p>
+        <p>Реф ссылка: <span id="ref-link">ABC123DEF456GHI</span></p>
+    </div>
+
+    <!-- Чат -->
+    <div id="chat" style="display: none;">
+        <h2>Чат</h2>
+        <a href="https://t.me/yourchat" target="_blank" class="button">Перейти в чат</a>
+    </div>
+
+    <!-- О нас -->
+    <div id="about" style="display: none;">
+        <h2>О нас</h2>
+        <p>Информация пока недоступна.</p>
+    </div>
+
+    <script>
+        // Показываем главное меню после подписки на спонсоров
+        function showMainMenu() {
+            document.getElementById('sponsors').style.display = 'none';
+            document.getElementById('main-menu').style.display = 'block';
+        }
+
+        // Переключение между разделами
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('div').forEach(div => div.style.display = 'none');
+                const target = button.href.split('#')[1];
+                if (target) {
+                    document.getElementById(target).style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
